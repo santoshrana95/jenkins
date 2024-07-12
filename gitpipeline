@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+    parameters {
+  string defaultValue: 'pwd', description: 'present directory', name: 'server'
+}
+    stages {
+        stage("para") {
+            steps {
+                sh '''
+ansible-playbook  /var/lib/jenkins/ansible/git.yml -i $server'''
+            }
+        }
+    }
+}
